@@ -10,7 +10,7 @@ import {
 import { NavLink } from "@remix-run/react";
 import React from "react";
 
-export const Header: React.FC = () => {
+export const DrawerNavigation: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   if (!isOpen) {
