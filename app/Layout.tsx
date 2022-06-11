@@ -1,4 +1,4 @@
-import { AppBar, Button, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { NavLink } from "@remix-run/react";
@@ -22,22 +22,34 @@ export const Layout: React.FC = (props) => {
       >
         <Toolbar>
           {isMobile && <DrawerNavigation />}
-          <Typography variant="h5" sx={{ marginRight: "2rem" }}>
-            TanVet
-          </Typography>
+          <NavLink
+            prefetch="intent"
+            style={{
+              textDecoration: "none",
+              marginRight: "1rem",
+              color: "dodgerblue",
+            }}
+            to="/home"
+          >
+            <Typography variant="h5" sx={{ marginRight: "2rem" }}>
+              TanVet
+            </Typography>
+          </NavLink>
           {!isMobile && (
             <>
               <div
                 id="nav"
                 style={{
                   flexGrow: 1,
+                  display: "flex",
+                  justifyContent: "center",
                 }}
               >
                 <NavLink
                   prefetch="intent"
                   style={{
                     textDecoration: "none",
-                    marginRight: "1rem",
+                    marginRight: "3rem",
                     color: "dodgerblue",
                   }}
                   to="/home"
@@ -72,7 +84,13 @@ export const Layout: React.FC = (props) => {
           )}
         </Toolbar>
       </AppBar>
-      {props.children}
+      <Box
+        sx={{
+          padding: "1rem",
+        }}
+      >
+        {props.children}
+      </Box>
     </div>
   );
 };
