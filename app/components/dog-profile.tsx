@@ -1,11 +1,61 @@
-import { Box, Typography } from "@mui/material";
+import { Avatar, Paper, Card, Typography, Badge, Stack } from "@mui/material";
 import React from "react";
 import type { Pet } from "~/server/db";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
-export const DogProfile: React.FC<Pet> = (pet) => {
+type Props = {
+  pet: Pet;
+};
+
+export const DogProfile: React.FC<Props> = ({ pet }) => {
   return (
-    <Box>
-      <Typography>{pet.name}</Typography>
-    </Box>
+    <Card>
+      <div
+        style={{
+          width: "100%",
+          padding: "1em",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Avatar
+          alt={pet.name}
+          sx={{
+            width: 256,
+            height: 256,
+            marginBottom: "1em",
+            cursor: "pointer",
+          }}
+          src={pet.thumbnail}
+          onClick={() => {
+            console.log("clicked - ", pet.name);
+          }}
+        />
+        <Typography variant="h4">{pet.name}</Typography>
+      </div>
+      <Paper
+        style={{
+          padding: ".5em",
+          margin: "1em",
+          height: "80px",
+          overflowY: "auto",
+        }}
+      >
+        <Typography variant="body1">{pet.description}</Typography>
+      </Paper>
+      <Stack direction="row" alignItems="center" justifyContent="center">
+        <FavoriteIcon
+          sx={{
+            color: "red",
+            fontSize: "3rem",
+          }}
+        />
+        <Typography sx={{ color: "red", fontSize: "3rem" }} variant="body1">
+          {pet.likes}
+        </Typography>
+      </Stack>
+    </Card>
   );
 };

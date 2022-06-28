@@ -2,7 +2,7 @@ import type { App } from "firebase-admin/app";
 import { applicationDefault, getApps, initializeApp } from "firebase-admin/app";
 import type { Firestore } from "firebase-admin/firestore";
 import { getFirestore } from "firebase-admin/firestore";
-import z from "zod";
+import z, { string } from "zod";
 
 let firebase: App | undefined;
 let firestoreDb: Firestore;
@@ -22,11 +22,15 @@ if (!getApps().length) {
 export { firestoreDb };
 
 const PetObject = z.object({
+  id: string(),
   name: z.string(),
   age: z.number(),
   breed: z.string(),
   color: z.string(),
   description: z.string().optional(),
+  thumbnail: z.string(),
+  images: z.array(z.string()).optional(),
+  likes: z.number(),
 });
 
 const PetObjectArray = z.array(PetObject);
