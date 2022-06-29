@@ -1,10 +1,11 @@
-import { Avatar, Paper, Card, Typography, Badge, Stack } from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Avatar, Card, Paper, Stack, Typography } from "@mui/material";
 import React from "react";
 import type { Pet } from "~/server/db";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 
 type Props = {
   pet: Pet;
+  isAdmin?: boolean;
 };
 
 export const DogProfile: React.FC<Props> = ({ pet }) => {

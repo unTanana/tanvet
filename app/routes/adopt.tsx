@@ -22,7 +22,7 @@ const Adopt: React.FC = () => {
         </Typography>
       </Grid>
       {loaderData.map((pet) => (
-        <Grid item xs={12} md={3} lg={2} key={pet.id}>
+        <Grid item xs={12} md={4} lg={3} key={pet.id}>
           <DogProfile pet={pet} />
         </Grid>
       ))}
