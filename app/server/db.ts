@@ -38,8 +38,18 @@ const PetObjectArray = z.array(PetObject);
 export type Pet = z.infer<typeof PetObject>;
 
 export const getAllDogs = async (): Promise<Pet[]> => {
-  const dogs = await firestoreDb.collection("dogs").get();
+  const dogResponse = await firestoreDb.collection("dogs").get();
   return PetObjectArray.parse(
-    dogs.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+    dogResponse.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
   );
+};
+
+export const getDogById = async (id: string): Promise<Pet> => {
+  const dog = await firestoreDb.collection("dogs").doc(id).get();
+  return PetObject.parse({ ...dog.data(), id: dog.id });
+};
+
+export const createDog = async (dog: Omit<Pet, "id">): Promise<Pet> => {
+  const dogDoc = await firestoreDb.collection("dogs").add(dog);
+  return PetObject.parse({ ...dog, id: dogDoc.id });
 };

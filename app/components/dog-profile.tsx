@@ -3,12 +3,16 @@ import { Avatar, Card, Paper, Stack, Typography } from "@mui/material";
 import React from "react";
 import type { Pet } from "~/server/db";
 
+const redirectToEdit = (petId: string) => {
+  window.location.href = `/admin/pet/${petId}/edit`;
+};
+
 type Props = {
   pet: Pet;
   isAdmin?: boolean;
 };
 
-export const DogProfile: React.FC<Props> = ({ pet }) => {
+export const DogProfile: React.FC<Props> = ({ pet, isAdmin }) => {
   return (
     <Card>
       <div
@@ -31,7 +35,9 @@ export const DogProfile: React.FC<Props> = ({ pet }) => {
           }}
           src={pet.thumbnail}
           onClick={() => {
-            console.log("clicked - ", pet.name);
+            if (isAdmin) {
+              redirectToEdit(pet.id);
+            }
           }}
         />
         <Typography variant="h4">{pet.name}</Typography>
