@@ -45,7 +45,7 @@ export const DogProfile: React.FC<Props> = ({ pet, isAdmin }) => {
         <a
           id={`email-link-${pet.id}`}
           style={{ display: "none" }}
-          href={`mailto:ciprian.tanana@gmail.com?subject=Adoptie ${pet.name}  &body=Buna ziua, as dori sa adopt pe ${pet.name}`}
+          href={`mailto:ciprian.tanana@gmail.com?subject=Adoptie ${pet.name}&body=Buna ziua, as dori sa adopt pe ${pet.name}`}
         >
           ciprian.tanana@gmail.com
         </a>

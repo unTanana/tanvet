@@ -1,6 +1,6 @@
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import type { HeadersFunction, LoaderFunction } from "@remix-run/node";
-import { json } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import React from "react";
 import { isAuthorized } from "~/server/auth";
@@ -14,9 +14,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     return json({ authorized: false }, { status: 401 });
   }
 
-  return json({
-    authorized: true,
-  });
+  return redirect("/admin/pets");
 };
 
 const Admin: React.FC = () => {
@@ -30,9 +28,9 @@ const Admin: React.FC = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12}>
+      <Typography variant="h3">
         <Link to="/admin/pets">Caini</Link>
-      </Grid>
+      </Typography>
     </Grid>
   );
 };

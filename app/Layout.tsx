@@ -83,7 +83,18 @@ export const Layout: React.FC = (props) => {
               </Button>
             </>
           )}
-          <Button color="inherit">Programeaza</Button>
+          <Button>
+            <NavLink
+              prefetch="intent"
+              style={{
+                textDecoration: "none",
+                color: "dodgerblue",
+              }}
+              to="/contact"
+            >
+              Programeaza
+            </NavLink>
+          </Button>
         </Toolbar>
       </AppBar>
       <Box
