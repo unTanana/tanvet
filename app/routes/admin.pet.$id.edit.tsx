@@ -3,6 +3,7 @@ import type { HeadersFunction, LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import React from "react";
+import { DogForm } from "~/components/dog-form";
 import { DogProfile } from "~/components/dog-profile";
 import { isAuthorized } from "~/server/auth";
 import type { Pet } from "~/server/db";
@@ -49,7 +50,7 @@ const Admin: React.FC = () => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <DogProfile pet={pet} isAdmin />
+        <DogForm pet={pet} />
       </Grid>
     </Grid>
   );

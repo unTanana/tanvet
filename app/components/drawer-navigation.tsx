@@ -20,7 +20,7 @@ export const DrawerNavigation: React.FC = () => {
         edge="start"
         color="inherit"
         aria-label="menu"
-        sx={{ mr: 2 }}
+        sx={{ mr: 1 }}
         onClick={() => setIsOpen(true)}
       >
         <MenuIcon />
@@ -57,9 +57,9 @@ export const DrawerNavigation: React.FC = () => {
                     textDecoration: "none",
                     color: "dodgerblue",
                   }}
-                  to="/about"
+                  to="/adopt"
                 >
-                  Despre
+                  Adopta
                 </NavLink>
               </ListItemText>
             </ListItemButton>
@@ -73,9 +73,9 @@ export const DrawerNavigation: React.FC = () => {
                     textDecoration: "none",
                     color: "dodgerblue",
                   }}
-                  to="/adopt"
+                  to="/about"
                 >
-                  Adopta
+                  Despre
                 </NavLink>
               </ListItemText>
             </ListItemButton>

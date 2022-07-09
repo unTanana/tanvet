@@ -20,21 +20,23 @@ export const Layout: React.FC = (props) => {
         }}
         position="static"
       >
-        <Toolbar>
-          {isMobile && <DrawerNavigation />}
-          <NavLink
-            prefetch="intent"
-            style={{
-              textDecoration: "none",
-              marginRight: "1rem",
-              color: "dodgerblue",
-            }}
-            to="/home"
-          >
-            <Typography variant="h5" sx={{ marginRight: "2rem" }}>
-              TanVet
-            </Typography>
-          </NavLink>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            {isMobile && <DrawerNavigation />}
+            <NavLink
+              prefetch="intent"
+              style={{
+                textDecoration: "none",
+                marginRight: "1rem",
+                color: "dodgerblue",
+              }}
+              to="/home"
+            >
+              <Typography variant="h5" sx={{ marginRight: "2rem" }}>
+                TanVet
+              </Typography>
+            </NavLink>
+          </div>
           {!isMobile && (
             <>
               <div
@@ -79,9 +81,9 @@ export const Layout: React.FC = (props) => {
                   Adopta
                 </NavLink>
               </Button>
-              <Button color="inherit">Programeaza</Button>
             </>
           )}
+          <Button color="inherit">Programeaza</Button>
         </Toolbar>
       </AppBar>
       <Box

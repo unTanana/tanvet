@@ -36,11 +36,19 @@ export const DogProfile: React.FC<Props> = ({ pet, isAdmin }) => {
           src={pet.thumbnail}
           onClick={() => {
             if (isAdmin) {
-              redirectToEdit(pet.id);
+              return redirectToEdit(pet.id);
             }
+            return document.getElementById(`email-link-${pet.id}`)?.click();
           }}
         />
         <Typography variant="h4">{pet.name}</Typography>
+        <a
+          id={`email-link-${pet.id}`}
+          style={{ display: "none" }}
+          href={`mailto:ciprian.tanana@gmail.com?subject=Adoptie ${pet.name}  &body=Buna ziua, as dori sa adopt pe ${pet.name}`}
+        >
+          ciprian.tanana@gmail.com
+        </a>
       </div>
       <Paper
         style={{
